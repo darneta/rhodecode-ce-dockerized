@@ -1,3 +1,4 @@
 persistent/*
 !persistent/.gitkeep
 docker-compose.override.yml
+local_build.sh
