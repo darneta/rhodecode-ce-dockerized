@@ -1,0 +1,28 @@
+version: '2'
+
+networks:
+  dev:
+    ipam:
+      config:
+        - subnet: 172.30.0.0/16
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "true"
+
+services:
+
+  db:
+    container_name: rhodecode_db
+    volumes:
+     - ./persistent/db:/var/lib/mysql
+    networks:
+      dev:
+        ipv4_address: 172.30.0.10
+
+  rhodecode:
+    container_name: rhodecode
+    volumes:
+     - ./persistent/rhodecode/repo:/home/rhodecode/repo
+    networks:
+      dev:
+        ipv4_address: 172.30.0.20
