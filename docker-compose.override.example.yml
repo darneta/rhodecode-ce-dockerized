@@ -29,6 +29,10 @@ services:
 
   rhodecode:
     container_name: rhodecode
+    links:
+     - db:db
+    environment:
+      RHODECODE_DB: "mysql://rhodecode:rhodecode@db/rhodecode"
     volumes:
      - ./persistent/rhodecode/repo:/home/rhodecode/repo
     networks:

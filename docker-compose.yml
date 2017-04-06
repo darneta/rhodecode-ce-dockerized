@@ -2,27 +2,8 @@ version: '2'
 
 services:
 
-  db:
-    image: mariadb
-    environment:
-      MYSQL_DATABASE: rhodecode
-      MYSQL_USER: rhodecode
-      MYSQL_PASSWORD: rhodecode
-      MYSQL_ROOT_PASSWORD: rhodecode
-    volumes:
-     - /var/lib/mysql
-
   rhodecode:
     image: darneta/rhodecode-ce-dockerized
-    environment:
-      RHODECODE_USER: admin
-      RHODECODE_USER_PASS: secret
-      RHODECODE_USER_EMAIL: support@rhodecode.com
-      RHODECODE_DB: "mysql://rhodecode:rhodecode@db/rhodecode"
-      RHODECODE_REPO_DIR: "/home/rhodecode/repo"
-      RHODECODE_VCS_PORT: 3690
-      RHODECODE_HTTP_PORT: 8080
-      RHODECODE_HOST: 0.0.0.0
     links:
       - db
     volumes:
