@@ -13,6 +13,14 @@ services:
 
   db:
     container_name: rhodecode_db
+    image: mariadb
+    environment:
+      MYSQL_DATABASE: rhodecode
+      MYSQL_USER: rhodecode
+      MYSQL_PASSWORD: rhodecode
+      MYSQL_ROOT_PASSWORD: rhodecode
+    volumes:
+     - /var/lib/mysql
     volumes:
      - ./persistent/db:/var/lib/mysql
     networks:
