@@ -22,7 +22,7 @@ services:
     volumes:
      - /var/lib/mysql
     volumes:
-     - ./persistent/db:/var/lib/mysql
+     - ./volumes/db:/var/lib/mysql
     networks:
       dev:
         ipv4_address: 172.30.0.10
@@ -34,7 +34,7 @@ services:
     environment:
       RHODECODE_DB: "mysql://rhodecode:rhodecode@db/rhodecode"
     volumes:
-     - ./persistent/rhodecode/repo:/home/rhodecode/repo
+     - ./volumes/rhodecode/repo:/home/rhodecode/repo
     networks:
       dev:
         ipv4_address: 172.30.0.20
