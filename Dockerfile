@@ -32,8 +32,6 @@ RUN chmod 755 ./RhodeCode-installer-*
 RUN ./RhodeCode-installer-* --accept-license --create-install-directory
 RUN .rccontrol-profile/bin/rccontrol self-init
 
-ADD ./container/start.sh start.sh
-
 ENV RHODECODE_USER=admin
 ENV RHODECODE_USER_PASS=secret
 ENV RHODECODE_USER_EMAIL=support@rhodecode.com
@@ -42,8 +40,6 @@ ENV RHODECODE_REPO_DIR=/home/rhodecode/repo
 ENV RHODECODE_VCS_PORT=3690
 ENV RHODECODE_HTTP_PORT=8080
 ENV RHODECODE_HOST=0.0.0.0
-
-RUN sudo chmod +x start.sh
 
 RUN mkdir -p /home/rhodecode/repo
 
