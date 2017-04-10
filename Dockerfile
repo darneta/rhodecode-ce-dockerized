@@ -54,6 +54,6 @@ RUN echo "[supervisord]" >> .rccontrol/supervisor/rhodecode_config_supervisord.i
 RUN echo "nodaemon = true" >> .rccontrol/supervisor/rhodecode_config_supervisord.ini
 RUN .rccontrol-profile/bin/rccontrol self-stop
 
-COPY ./container/reinstall.sh ~/
+COPY ./container/reinstall.sh /home/rhodecode/
 
 CMD ["supervisord", "-c", ".rccontrol/supervisor/supervisord.ini"]
