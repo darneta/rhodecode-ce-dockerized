@@ -51,7 +51,9 @@ RUN sed -i "s/self_managed_supervisor = False/self_managed_supervisor = True/g" 
 
 RUN touch .rccontrol/supervisor/rhodecode_config_supervisord.ini
 RUN echo "[supervisord]" >> .rccontrol/supervisor/rhodecode_config_supervisord.ini
-RUN echo "nodaemon = true" >> .rccontrol/supervisor/rhodecode_config_supervisord.ini 
+RUN echo "nodaemon = true" >> .rccontrol/supervisor/rhodecode_config_supervisord.ini
 RUN .rccontrol-profile/bin/rccontrol self-stop
+
+COPY ./container/reinstall.sh ~/
 
 CMD ["supervisord", "-c", ".rccontrol/supervisor/supervisord.ini"]
